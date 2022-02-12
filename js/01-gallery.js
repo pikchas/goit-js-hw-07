@@ -36,19 +36,16 @@ function modalShow(src) {
     </div>`,
     {
       onShow: instance => {
-        addListener();
+        window.addEventListener('keydown', onEscClick);
       },
       onClose: instance => {
-        removeListener();
+        window.removeEventListener('keydown', onEscClick);
       },
     },
   );
   instance.show();
 }
 
-function addListener() {
-  window.addEventListener('keydown', onEscClick);
-}
 
 function onEscClick(e) {
   if (e.code === 'Escape') {
@@ -56,8 +53,5 @@ function onEscClick(e) {
   }
 }
 
-function removeListener() {
-  window.removeEventListener('keydown', onEscClick);
-}
 
 console.log(makeGallery);
